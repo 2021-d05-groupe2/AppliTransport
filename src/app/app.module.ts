@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 
@@ -16,7 +15,6 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    HomeComponent,
     RegisterComponent
   ],
   imports: [

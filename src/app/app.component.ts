@@ -7,10 +7,10 @@ import { TokenStorageService } from './services/token-storage.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private roles: string[] = [];
+  private role: string;
   isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
+  isAdmin = false;
+  isCollaborateur = false;
   username?: string;
 
   constructor(private tokenStorageService: TokenStorageService) { }
@@ -20,10 +20,10 @@ export class AppComponent implements OnInit {
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
+      this.role = user.role;
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.isAdmin = this.role === "ADMIN";
+      this.isCollaborateur = (this.role === "ADMIN" || this.role === "COLLABORATEUR");
 
       this.username = user.username;
     }
