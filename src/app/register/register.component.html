@@ -12,16 +12,76 @@
         #f="ngForm"
         novalidate
       >
+      
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select
+            class="form-control"
+            name="role"
+            [(ngModel)]="form.role"
+            required
+            role
+            #role="ngModel"
+          >
+            <option value="COLLABORATEUR">COLLABORATEUR</option>
+            <option value="ADMIN">ADMIN</option>
+            <option value="CHAUFFEUR">CHAUFFEUR</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="firstName"
+            [(ngModel)]="form.firstName"
+            required
+            firstName
+            #firstName="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="form.name"
+            required
+            name
+            #name="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="tel">Tel</label>
+          <input
+            type="tel"
+            class="form-control"
+            name="tel"
+            [(ngModel)]="form.tel"
+            required
+            tel
+            #tel="ngModel">
+        </div>
+        <div class="form-group">
+          <label for="imgUrl">Photo</label>
+          <input
+            type="url"
+            class="form-control"
+            name="imgUrl"
+            [(ngModel)]="form.imgUrl"
+            required
+            imgUrl
+            #imgUrl="ngModel">
+        </div>
         <div class="form-group">
           <label for="mail">Mail</label>
           <input
-            type="mail"
+            type="email"
             class="form-control"
             name="mail"
             [(ngModel)]="form.mail"
             required
             email
-            #email="ngModel"
+            #mail="ngModel"
           />
           <div class="alert-danger" *ngIf="mail.errors && f.submitted">
             <div *ngIf="mail.errors.required">Mail is required</div>
