@@ -1,10 +1,13 @@
 <div class="container col-md-12">
   <div class="card card-container" id="profile-card">
-    <img
-      id="profile-img"
-      src="{{ currentUser.imgUrl }}"
-      class="profile-img-card rounded-circle"
-    />
+    <div id="imgCrop" class="rounded-circle"
+         style="background-image: url('{{ currentUser.imgUrl }}');">
+      <!--img
+        id="profile-img"
+        src="{{ currentUser.imgUrl }}"
+        class="profile-img-card"
+      /-->
+    </div>
     <header class="jumbotron mt-3 mb-3">
       <h3>
         <strong>{{ currentUser.name + " " + currentUser.firstName }}</strong>

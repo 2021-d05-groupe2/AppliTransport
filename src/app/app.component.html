@@ -26,7 +26,7 @@
 
 
           <!-- ADMIN ONLY-->
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" *ngIf="isAdmin">
               <a class="nav-link dropdown-toggle text-danger" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Administration
               </a>
@@ -46,7 +46,7 @@
         <span class="nav-text dropdown" *ngIf="isLoggedIn">
           <div class="btn-group">
             <div class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="{{ imgUrl }}" class="profile-img rounded-circle" id="navProfilPic" width="30erm">
+              <img src="{{ imgUrl }}" class="profile-img rounded-circle" id="navProfilPic">
             </div>
             <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" id="userDropdownMenu" aria-labelledby="profileDropdown">
               <li><a href="/profile" class="nav-link dropdown-item" routerLink="profile">Mon profil</a></li>

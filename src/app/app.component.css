@@ -9,3 +9,9 @@
     margin-bottom:.5em;
     vertical-align: bottom;
 }
+
+#navProfilPic{
+    width: 1.7em;
+    height: 1.7em;
+    background-size: cover;
+}
