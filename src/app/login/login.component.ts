@@ -21,6 +21,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
+      this.router.navigate(['/profile'])
+        .then(() => {
+          window.location.reload();
+        });
     }
   }
 
