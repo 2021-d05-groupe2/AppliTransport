@@ -1,6 +1,11 @@
-.dropdown-toggle::after{
+#profileDropdown::after{
     margin-bottom:.8em;
     width: .7em;
     vertical-align: bottom;
     color: #6c757d;
+}
+
+#adminDropdown::after{
+    margin-bottom:.5em;
+    vertical-align: bottom;
 }

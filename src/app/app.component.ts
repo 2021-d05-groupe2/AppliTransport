@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   isAdmin = false;
   isCollaborateur = false;
   username?: string;
-  imgurl: string;
+  imgUrl: string;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
       this.isCollaborateur = (this.role === "ADMIN" || this.role === "COLLABORATEUR");
 
       this.username = user.username;
-      this.imgurl = user.imgUrl;
+      this.imgUrl = user.imgUrl;
     }
   }
 
