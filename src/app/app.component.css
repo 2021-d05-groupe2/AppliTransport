@@ -1,0 +1,6 @@
+.dropdown-toggle::after{
+    margin-bottom:.8em;
+    width: .7em;
+    vertical-align: bottom;
+    color: #6c757d;
+}

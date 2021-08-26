@@ -35,9 +35,17 @@
           </ul>
         </div>
 
-        <span class="nav-text" *ngIf="isLoggedIn">
-          <a href="/profile" class="nav-link" routerLink="profile">Bonjour XXX</a>
-          <a href class="nav-link" (click)="logout()">Se déconnecter</a>
+        <span class="nav-text dropdown" *ngIf="isLoggedIn">
+          <div class="btn-group">
+            <div class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img rounded-circle" id="navProfilPic" width="30erm">
+            </div>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" id="userDropdownMenu" aria-labelledby="profileDropdown">
+              <li><a href="/profile" class="nav-link dropdown-item" routerLink="profile">Mon profil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a href class="nav-link dropdown-item" (click)="logout()">Se déconnecter</a></li>
+            </ul>
+          </div>
         </span>
       </div>
         
