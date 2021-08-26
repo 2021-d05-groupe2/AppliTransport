@@ -23,21 +23,37 @@
             <li class="nav-item" *ngIf="isCollaborateur">
               <a href="/annonces" class="nav-link" routerLink="annonces">Vos annonces</a>
             </li>
-          </ul>
+
+
           <!-- ADMIN ONLY-->
-          <ul class="navbar-nav" *ngIf="isAdmin">
-            <li class="nav-item">
-              <a href="/chauffeur" class="nav-link text-danger" routerLink="admin">Chauffeurs</a>
+            <li class="nav-item dropdown" *ngIf="isAdmin">
+              <a class="nav-link dropdown-toggle text-danger" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Administration
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="adminDropdown">
+                <li>
+                  <a href="/chauffeur" class="nav-link dropdown-item" routerLink="admin">Chauffeurs</a>
+                </li>
+                <li>
+                  <a href="/vehicules" class="nav-link dropdown-item" routerLink="admin">Véhicules</a>
+                </li>
+              </ul>
             </li>
-            <li class="nav-item">
-              <a href="/vehicules" class="nav-link text-danger" routerLink="admin">Véhicules</a>
-            </li>
+
           </ul>
         </div>
 
-        <span class="nav-text" *ngIf="isLoggedIn">
-          <a href="/profile" class="nav-link" routerLink="profile">Bonjour XXX</a>
-          <a href class="nav-link" (click)="logout()">Se déconnecter</a>
+        <span class="nav-text dropdown" *ngIf="isLoggedIn">
+          <div class="btn-group">
+            <div class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{{ imgUrl }}" class="profile-img rounded-circle" id="navProfilPic">
+            </div>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" id="userDropdownMenu" aria-labelledby="profileDropdown">
+              <li><a href="/profile" class="nav-link dropdown-item" routerLink="profile">Mon profil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a href class="nav-link dropdown-item" (click)="logout()">Se déconnecter</a></li>
+            </ul>
+          </div>
         </span>
       </div>
         
