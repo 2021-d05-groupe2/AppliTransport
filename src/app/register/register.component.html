@@ -1,10 +1,5 @@
 <div class="col-md-12">
-    <div class="card card-container">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
+    <div class="card card-container" id="register-card">
       <form
         *ngIf="!isSuccessful"
         name="form"
@@ -16,7 +11,7 @@
         <div class="form-group">
           <label for="role">Role</label>
           <select
-            class="form-control"
+            class="form-select"
             name="role"
             [(ngModel)]="form.role"
             required
@@ -27,9 +22,12 @@
             <option value="ADMIN">ADMIN</option>
             <option value="CHAUFFEUR">CHAUFFEUR</option>
           </select>
+          <div class="alert-danger" *ngIf="role.errors && f.submitted">
+            <div *ngIf="role.errors.required">Role is required</div>
+          </div>
         </div>
         <div class="form-group">
-          <label for="firstName">First Name</label>
+          <label for="firstName">Prénom</label>
           <input
             type="text"
             class="form-control"
@@ -38,20 +36,28 @@
             required
             firstName
             #firstName="ngModel">
+            <div class="alert-danger" *ngIf="firstName.errors && f.submitted">
+              <div *ngIf="firstName.errors.required">Prénom is required</div>
+            </div>
         </div>
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Nom</label>
           <input
             type="text"
             class="form-control"
             name="name"
             [(ngModel)]="form.name"
+            [ngModelOptions]="{standalone: true}"
             required
             name
             #name="ngModel">
+            <!-- Does'nt work without [ngModelOptions]="{standalone: true}" -->
+            <div class="alert-danger" *ngIf="name.errors && f.submitted">
+              <div *ngIf="name.errors.required">Nom is required</div>
+            </div>
         </div>
         <div class="form-group">
-          <label for="tel">Tel</label>
+          <label for="tel">Téléphone</label>
           <input
             type="tel"
             class="form-control"
@@ -91,7 +97,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">Mot de passe</label>
           <input
             type="password"
             class="form-control"
@@ -102,23 +108,23 @@
             #password="ngModel"
           />
           <div class="alert-danger" *ngIf="password.errors && f.submitted">
-            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.required">Mot de passe is required</div>
             <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
+              Mot de passe must be at least 6 characters
             </div>
           </div>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary btn-block">Sign Up</button>
+          <button class="btn btn-primary mt-2 btn-lg col-12">Ajouter l'utilisateur</button>
         </div>
   
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-          Signup failed!<br />{{ errorMessage }}
+          Erreur !<br />{{ errorMessage }}
         </div>
       </form>
   
       <div class="alert alert-success" *ngIf="isSuccessful">
-        Your registration is successful!
+        Utilisateur ajouté !
       </div>
     </div>
   </div>

@@ -1,19 +1,25 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
-  <header class="jumbotron">
-    <h3>
-      <strong>{{ currentUser.name + " " + currentUser.firstName }}</strong>
-    </h3>
-  </header>
-  <p>
-    <strong>Email:</strong>
-    {{ currentUser.mail }}
-  </p>
-  <p>
-    <strong>Tél:</strong>
-    {{ currentUser.tel }}
-  </p>
+<div class="container col-md-12">
+  <div class="card card-container" id="profile-card">
+    <div id="imgCrop" class="rounded-circle"
+         style="background-image: url('{{ currentUser.imgUrl }}');">
+      <!--img
+        id="profile-img"
+        src="{{ currentUser.imgUrl }}"
+        class="profile-img-card"
+      /-->
+    </div>
+    <header class="jumbotron mt-3 mb-3">
+      <h3>
+        <strong>{{ currentUser.name + " " + currentUser.firstName }}</strong>
+      </h3>
+    </header>
+    <p>
+      <strong>Email:</strong>
+      {{ currentUser.mail }}
+    </p>
+    <p>
+      <strong>Tél:</strong>
+      {{ currentUser.tel }}
+    </p>
+  </div>
 </div>
-  
-<ng-template #loggedOut>
-    Please login.
-</ng-template>
