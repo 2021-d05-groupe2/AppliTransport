@@ -1,5 +1,106 @@
-<div class="container-fluid">
+<div class="container-fluid col-12">
     <h3>Mes annonces</h3>
-
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary float-end" (click)="open()" data-bs-toggle="modal" data-bs-target="#newAnnonceModal">
+        Publier une nouvelle annonce
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal" id="newAnnonceModal" tabindex="-1" aria-labelledby="newAnnonceModalLabel" aria-hidden="true" #newAnnonceModal>
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="newAnnonceModalLabel">Nouvelle annonce</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div id="itineraire">
+                            <h5 class="border-bottom border-3 border-dark">Itinéraire</h5>
+                            <div class="mb-3 row">
+                                <label for="adresseDepart" class="col-sm-2 col-form-label">Adresse de départ</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="adresseDepart" name="adresseDepart"/>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="adresseDestination" class="col-sm-2 col-form-label">Adresse de destination</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="adresseDestination" name="adresseDestination"/>
+                                </div>
+                            </div>
+                            <div class="mb-3 row readonly">
+                                <label for="duree" class="col-sm-2 col-form-label">Durée du trajet</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" id="duree" value="2 h 31 mn">
+                                </div>
+                            </div>
+                            <div class="mb-3 row readonly">
+                                <label for="distance" class="col-sm-2 col-form-label">Distance</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" id="distance" value="250 km">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="vehicule">
+                            <h5 class="border-bottom border-3 border-dark">Véhicule</h5>
+                            <div class="mb-3 row">
+                                <label for="immatriculation" class="col-sm-2 col-form-label">Immatriculation</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="immatriculation" name="immatriculation"/>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="marque" class="col-sm-2 col-form-label">Marque</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="marque" name="marque"/>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="modele" class="col-sm-2 col-form-label">Modèle</label>
+                                <div class="col-sm-10">
+                                    <input required type="text" class="form-control" id="modele" name="modele"/>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="nbPlaces" class="col-sm-2 col-form-label">Nombre de places</label>
+                                <div class="col-sm-1">
+                                    <input required type="number" min="1" class="form-control" id="nbPlaces" name="nbPlaces"/>
+                                </div>
+                            </div>
+                            <div id="vehicule">
+                                <h5 class="border-bottom border-3 border-dark">Date et horaire</h5>
+                                <div class="mb-3 row">
+                                    <label for="date" class="col-sm-2 col-form-label">Date</label>
+                                    <div class="col-sm-2">
+                                        <input required type="date" class="form-control" id="date" name="date" min="{{ minDate }}"/>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <select class="form-select" id="heures">
+                                            <option *ngFor="let h of heures | keyvalue" [value]="h.key">
+                                                {{h.value}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1" id="h">h</div>
+                                    <div class="col-sm-1">
+                                        <select class="form-select col-sm-1" id="minutes">
+                                            <option *ngFor="let m of minutes | keyvalue" [value]="m.key">
+                                                {{m.value}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Fermer</button>
+                    <button type="button" class="btn btn-primary">Publier</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </div>
