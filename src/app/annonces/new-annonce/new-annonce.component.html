@@ -10,6 +10,10 @@
 
 <!-- Modal -->
 <div class="modal" id="newAnnonceModal" tabindex="-1" aria-labelledby="newAnnonceModalLabel" aria-hidden="true" #newAnnonceModal>
+    <div *ngIf="f.submitted && !isSuccess" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <h4>Erreur : {{ errorMessage }} !</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -37,7 +41,7 @@
                                     #adresseDepart="ngModel"/>
                             </div>
                             <div
-                              class="alert alert-danger"
+                              class="alert alert-danger alert-form"
                               role="alert"
                               *ngIf="adresseDepart.errors && f.submitted"
                             >
@@ -57,7 +61,7 @@
                                     #adresseDestination="ngModel"/>
                             </div>
                             <div
-                              class="alert alert-danger"
+                              class="alert alert-danger alert-form"
                               role="alert"
                               *ngIf="adresseDestination.errors && f.submitted"
                             >
@@ -81,7 +85,7 @@
                             </div>
                             <div class="col-sm-1" id="dd">minutes</div>
                             <div
-                              class="alert alert-danger"
+                              class="alert alert-danger alert-form"
                               role="alert"
                               *ngIf="adresseDestination.errors && f.submitted"
                             >
@@ -105,7 +109,7 @@
                             </div>
                             <div class="col-sm-1" id="dd">km</div>
                             <div
-                              class="alert alert-danger"
+                              class="alert alert-danger alert-form"
                               role="alert"
                               *ngIf="adresseDestination.errors && f.submitted"
                             >
@@ -128,7 +132,7 @@
                                     #immatriculation="ngModel"/>
                             </div>
                             <div
-                              class="alert alert-danger"
+                              class="alert alert-danger alert-form"
                               role="alert"
                               *ngIf="immatriculation.errors && f.submitted"
                             >
@@ -148,7 +152,7 @@
                                     #marque="ngModel"/>
                             </div>
                             <div
-                              class="alert alert-danger"
+                              class="alert alert-danger alert-form"
                               role="alert"
                               *ngIf="marque.errors && f.submitted"
                             >
@@ -169,7 +173,7 @@
                                     #modele="ngModel"/>
                             </div>
                             <div
-                                class="alert alert-danger"
+                                class="alert alert-danger alert-form"
                                 role="alert"
                                 *ngIf="modele.errors && f.submitted"
                             >
@@ -189,7 +193,7 @@
                                     #nbPlaces="ngModel"/>
                             </div>
                             <div
-                            class="alert alert-danger"
+                            class="alert alert-danger alert-form"
                             role="alert"
                             *ngIf="nbPlaces.errors && f.submitted"
                             >
@@ -239,21 +243,21 @@
                                 </div>
                             </div>
                             <div
-                            class="alert alert-danger"
+                            class="alert alert-danger alert-form"
                             role="alert"
                             *ngIf="date.errors && f.submitted"
                             >
                             Veuillez indiquer la date !
                             </div>
                             <div
-                            class="alert alert-danger"
+                            class="alert alert-danger alert-form"
                             role="alert"
                             *ngIf="heures.errors && f.submitted"
                             >
                             Veuillez indiquer l'heure !
                             </div>
                             <div
-                            class="alert alert-danger"
+                            class="alert alert-danger alert-form"
                             role="alert"
                             *ngIf="heures.errors && f.submitted"
                             >

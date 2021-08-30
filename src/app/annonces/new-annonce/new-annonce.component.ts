@@ -55,6 +55,7 @@ export class NewAnnonceComponent implements OnInit {
 
   // PUBLICATION FORM
   isSuccess:boolean = false;
+  isFail:boolean = false;
 
   publishForm: any = {
     adresseDepart: null,
@@ -110,16 +111,16 @@ export class NewAnnonceComponent implements OnInit {
     this.covoiturageService.create(data)
       .subscribe(
         response => {
-          console.log(response);
+          this.close();
+          this.isSuccess = true;
+          this.isFail = false;
         },
         err => {
-          console.log(err);
-          this.errorMessage = err.error.message;
+          this.errorMessage = err.error;
           this.isSuccess = false;
+          this.isFail = true;
         });
 
-    this.close();
-    this.isSuccess = true;
   }
 
   covoiturage: Covoiturage = {
