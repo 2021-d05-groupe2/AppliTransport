@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
+import { Covoiturage } from '../model/covoiturage.model';
 
 const createUrl = 'http://localhost:8090/api/travel/newAnnonce';
 
@@ -22,5 +23,9 @@ export class CovoiturageService {
       })
     };
     return this.http.post(createUrl, data, httpOptions);
+  }
+
+  getallCovoit(): Observable<Covoiturage[]>{
+    return this.http.get<Covoiturage[]>('http://localhost:8090/api/travel/listcovoiturage/');
   }
 }

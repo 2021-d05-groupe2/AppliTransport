@@ -1,4 +1,6 @@
+import { Covoiturage } from './../model/covoiturage.model';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reservations',
@@ -7,12 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationsComponent implements OnInit {
 
-  constructor() { }
+  covoiturages: Covoiturage[];
+
+  constructor(private route: ActivatedRoute) { }
 
   public show:any=null;
 
 
   ngOnInit(): void {
+    this.covoiturages = this.route.snapshot.data.covoiturages;
   }
 
   toggle1(){

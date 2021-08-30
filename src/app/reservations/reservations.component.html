@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h3>Mes réservations</h3>
-  <button (click)="toggle1()" id="covoit"> Covoiturage</button>
-  <button (click)="toggle2()" id="service">Véhicule de société</button>
+  <button class="btn btn-primary" (click)="toggle1()" id="covoit"> Covoiturage</button>
+  <button class="btn btn-primary pull-right" (click)="toggle2()" id="service">Véhicule de société</button>
 
   <ng-container *ngIf="show=='covoit'">
       <h4>Réservations de covoiturage en cours</h4>
@@ -10,18 +10,12 @@
         <tr>
           <th scope="col">Date / heure de début</th>
           <th scope="col">Date / heure de fin</th>
-          <th scope="col">Immatriculation</th>
-          <th scope="col">Marque</th>
-          <th scope="col">Modèle</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>exemple</td>
-          <td>exemple</td>
-          <td>exemple</td>
-          <td>exemple</td>
-          <td>exemple</td>
+        <tr *ngFor="let covoiture of covoiturages"()>
+          <td>{{covoiturage | json}}</td>
+          <td>{{covoiturage.duree}}</td>
         </tr>
       </tbody>
     </table>
@@ -29,7 +23,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col">Date / heure de début</th>
+          <th scope="col"> Date / heure de départ</th>
           <th scope="col">Date / heure de fin</th>
           <th scope="col">Immatriculation</th>
           <th scope="col">Marque</th>
