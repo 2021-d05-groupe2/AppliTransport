@@ -4,6 +4,8 @@ import { Collaborateur } from 'src/app/model/collaborateur.model';
 import { Covoiturage } from 'src/app/model/covoiturage.model';
 import { Voitureprive } from 'src/app/model/voitureprive.model';
 import { CovoiturageService } from 'src/app/services/covoiturage.service';
+import { NgForm } from '@angular/forms';
+declare var $ : any;
 
 @Component({
   selector: 'app-new-annonce',
@@ -79,7 +81,7 @@ export class NewAnnonceComponent implements OnInit {
     return formatDate(nowPlusOneDay,'yyyy-MM-dd',this.locale);
   }
 
-  onSubmit(): void {
+  onSubmit(f:NgForm): void {
     const {
       adresseDepart,
       adresseDestination,
@@ -111,9 +113,10 @@ export class NewAnnonceComponent implements OnInit {
     this.covoiturageService.create(data)
       .subscribe(
         response => {
-          this.close();
+          $('#newAnnonceModal').modal('hide');
           this.isSuccess = true;
           this.isFail = false;
+          f.reset();
         },
         err => {
           this.errorMessage = err.error;
