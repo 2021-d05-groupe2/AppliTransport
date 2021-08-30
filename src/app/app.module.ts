@@ -9,13 +9,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    ReservationsComponent
   ],
   imports: [
     BrowserModule,
