@@ -64,17 +64,46 @@
                             Veuillez indiquer l'adresse de destination !
                             </div>
                         </div>
-                        <div class="mb-3 row readonly">
+                        <div class="mb-3 row">
                             <label for="duree" class="col-sm-2 col-form-label">Durée du trajet</label>
-                            <div class="col-sm-10">
-                                <input type="text" readonly class="form-control-plaintext" id="duree" value="2 h 31 mn">
+                            <div class="col-sm-1">
+                                <input 
+                                    required
+                                    type="number"
+                                    class="form-control"
+                                    id="duree"
+                                    min="0"
+                                    step="10"
+                                    name="duree"
+                                    [(ngModel)]="publishForm.duree"
+                                    #duree="ngModel"
+                                >
+                            </div>
+                            <div class="col-sm-1" id="dd">minutes</div>
+                            <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="adresseDestination.errors && f.submitted"
+                            >
+                            Veuillez indiquer la durée en minutes du trajet !
                             </div>
                         </div>
-                        <div class="mb-3 row readonly">
+                        <div class="mb-3 row">
                             <label for="distance" class="col-sm-2 col-form-label">Distance</label>
-                            <div class="col-sm-10">
-                                <input type="text" readonly class="form-control-plaintext" id="distance" value="250 km">
+                            <div class="col-sm-1">
+                                <input
+                                    required
+                                    type="number"
+                                    class="form-control"
+                                    id="distance"
+                                    min="0"
+                                    step="10"
+                                    name="distance"
+                                    [(ngModel)]="publishForm.distance"
+                                    #duree="ngModel"
+                                >
                             </div>
+                            <div class="col-sm-1" id="dd">km</div>
                         </div>
                     </div>
                     <div id="vehicule">

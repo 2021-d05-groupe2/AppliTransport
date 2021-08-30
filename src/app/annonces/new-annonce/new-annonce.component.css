@@ -4,6 +4,13 @@
     margin: 0;
     padding-top: .3em;
 }
+#dd{
+    width: auto;
+    vertical-align: baseline;
+    margin: 0;
+    padding-left: 0;
+    padding-top: .5em;
+}
 
 .readonly{
     pointer-events: none;
