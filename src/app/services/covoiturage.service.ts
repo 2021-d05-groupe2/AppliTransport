@@ -23,5 +23,4 @@ export class CovoiturageService {
     };
     return this.http.post(createUrl, data, httpOptions);
   }
-
 }

@@ -13,6 +13,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
 import { NewAnnonceComponent } from './annonces/new-annonce/new-annonce.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
