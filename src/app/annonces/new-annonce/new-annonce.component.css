@@ -1,0 +1,20 @@
+#h{
+    width: auto;
+    vertical-align: baseline;
+    margin: 0;
+    padding-top: .3em;
+}
+
+.readonly{
+    pointer-events: none;
+}
+
+.alert-danger{
+    height: 30px;
+    line-height:30px;
+    padding:0px 15px;
+    text-align: center;
+    width: auto;
+}
+
+/*#newAnnonceModal{display: block;}/*Pour tester sans avoir a rouvrir le modal a chaque refresh */

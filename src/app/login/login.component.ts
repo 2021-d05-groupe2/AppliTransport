@@ -21,6 +21,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
+      this.router.navigate(['/profile'])
+        .then(() => {
+          window.location.reload();
+        });
     }
   }
 
@@ -30,6 +34,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(mail, password).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveRefreshToken(data.refreshToken);
         this.tokenStorage.saveUser(data);
 
         this.isLoginFailed = false;
@@ -44,9 +49,5 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
       }
     );
-  }
-
-  reloadPage(): void {
-    window.location.reload();
   }
 }

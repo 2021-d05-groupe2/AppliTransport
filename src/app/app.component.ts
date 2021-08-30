@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TokenStorageService } from './services/token-storage.service';
+import { EventBusService } from './shared/event-bus.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +14,11 @@ export class AppComponent implements OnInit {
   isAdmin = false;
   isCollaborateur = false;
   username?: string;
+  imgUrl: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  eventBusSub?: Subscription;
+
+  constructor(private tokenStorageService: TokenStorageService, private eventBusService: EventBusService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -26,11 +31,23 @@ export class AppComponent implements OnInit {
       this.isCollaborateur = (this.role === "ADMIN" || this.role === "COLLABORATEUR");
 
       this.username = user.username;
+      this.imgUrl = user.imgUrl;
     }
+
+    this.eventBusSub = this.eventBusService.on('logout', () => {
+      this.logout();
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.eventBusSub)
+      this.eventBusSub.unsubscribe();
   }
 
   logout(): void {
     this.tokenStorageService.signOut();
+
+    this.isLoggedIn = false;
     window.location.reload();
   }
 }

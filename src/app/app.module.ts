@@ -10,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { AnnoncesComponent } from './annonces/annonces.component';
+import { NewAnnonceComponent } from './annonces/new-annonce/new-annonce.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ReservationsComponent } from './reservations/reservations.component';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    AnnoncesComponent,
+    NewAnnonceComponent
   ],
   imports: [
     BrowserModule,
