@@ -104,6 +104,13 @@
                                 >
                             </div>
                             <div class="col-sm-1" id="dd">km</div>
+                            <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="adresseDestination.errors && f.submitted"
+                            >
+                            Veuillez indiquer la distance en km du trajet !
+                            </div>
                         </div>
                     </div>
                     <div id="vehicule">
