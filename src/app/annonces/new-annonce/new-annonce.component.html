@@ -1,0 +1,236 @@
+<div *ngIf="f.submitted && isSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+    <h4>Annonce publiée avec succès !</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-end" (click)="open()" data-bs-toggle="modal" data-bs-target="#newAnnonceModal">
+    Publier une nouvelle annonce
+</button>
+
+<!-- Modal -->
+<div class="modal" id="newAnnonceModal" tabindex="-1" aria-labelledby="newAnnonceModalLabel" aria-hidden="true" #newAnnonceModal>
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="newAnnonceModalLabel">Nouvelle annonce</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
+            </div>
+            <div class="modal-body">
+                <form
+                name="publishForm"
+                (ngSubmit)="f.form.valid && onSubmit()"
+                #f="ngForm"
+                novalidate>
+                    <div id="itineraire">
+                        <h5 class="border-bottom border-3 border-dark">Itinéraire</h5>
+                        <div class="mb-3 row">
+                            <label for="adresseDepart" class="col-sm-2 col-form-label">Adresse de départ</label>
+                            <div class="col-sm-10">
+                                <input
+                                    required
+                                    type="text"
+                                    class="form-control"
+                                    id="adresseDepart"
+                                    name="adresseDepart"                                    
+                                    [(ngModel)]="publishForm.adresseDepart"
+                                    #adresseDepart="ngModel"/>
+                            </div>
+                            <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="adresseDepart.errors && f.submitted"
+                            >
+                            Veuillez indiquer l'adresse de départ !
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="adresseDestination" class="col-sm-2 col-form-label">Adresse de destination</label>
+                            <div class="col-sm-10">
+                                <input
+                                    required
+                                    type="text"
+                                    class="form-control"
+                                    id="adresseDestination"
+                                    name="adresseDestination"                                    
+                                    [(ngModel)]="publishForm.adresseDestination"
+                                    #adresseDestination="ngModel"/>
+                            </div>
+                            <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="adresseDestination.errors && f.submitted"
+                            >
+                            Veuillez indiquer l'adresse de destination !
+                            </div>
+                        </div>
+                        <div class="mb-3 row readonly">
+                            <label for="duree" class="col-sm-2 col-form-label">Durée du trajet</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="duree" value="2 h 31 mn">
+                            </div>
+                        </div>
+                        <div class="mb-3 row readonly">
+                            <label for="distance" class="col-sm-2 col-form-label">Distance</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="distance" value="250 km">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="vehicule">
+                        <h5 class="border-bottom border-3 border-dark">Véhicule</h5>
+                        <div class="mb-3 row">
+                            <label for="immatriculation" class="col-sm-2 col-form-label">Immatriculation</label>
+                            <div class="col-sm-10">
+                                <input
+                                    required
+                                    type="text"
+                                    class="form-control"
+                                    id="immatriculation"
+                                    name="immatriculation"                                    
+                                    [(ngModel)]="publishForm.immatriculation"
+                                    #immatriculation="ngModel"/>
+                            </div>
+                            <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="immatriculation.errors && f.submitted"
+                            >
+                            Veuillez indiquer le numéro d'immatriculation du véhicule !
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="marque" class="col-sm-2 col-form-label">Marque</label>
+                            <div class="col-sm-10">
+                                <input
+                                    required
+                                    type="text"
+                                    class="form-control"
+                                    id="marque"
+                                    name="marque"                                    
+                                    [(ngModel)]="publishForm.marque"
+                                    #marque="ngModel"/>
+                            </div>
+                            <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="marque.errors && f.submitted"
+                            >
+                            Veuillez indiquer la marque du véhicule !
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="modele" class="col-sm-2 col-form-label">Modèle</label>
+                            <div class="col-sm-10">
+                                <input
+                                    required
+                                    type="text"
+                                    class="form-control"
+                                    id="modele"
+                                    name="modele"                                    
+                                    [(ngModel)]="publishForm.modele"
+                                    required
+                                    #modele="ngModel"/>
+                            </div>
+                            <div
+                                class="alert alert-danger"
+                                role="alert"
+                                *ngIf="modele.errors && f.submitted"
+                            >
+                            Veuillez indiquer le modèle du véhicule !
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="nbPlaces" class="col-sm-2 col-form-label">Nombre de places</label>
+                            <div class="col-sm-1">
+                                <input required
+                                    type="number"
+                                    min="1"
+                                    class="form-control"
+                                    id="nbPlaces"
+                                    name="nbPlaces"                                    
+                                    [(ngModel)]="publishForm.nbPlaces"
+                                    #nbPlaces="ngModel"/>
+                            </div>
+                            <div
+                            class="alert alert-danger"
+                            role="alert"
+                            *ngIf="nbPlaces.errors && f.submitted"
+                            >
+                            Veuillez indiquer le nombre de places disponibles !
+                            </div>
+                        </div>
+                        <div id="horaire">
+                            <h5 class="border-bottom border-3 border-dark">Date et horaire</h5>
+                            <div class="mb-3 row">
+                                <label for="date" class="col-sm-2 col-form-label">Date</label>
+                                <div class="col-sm-2">
+                                    <input
+                                        required
+                                        type="date"
+                                        class="form-control"
+                                        id="date"
+                                        name="date"
+                                        min="{{ minDate }}"                     
+                                        [(ngModel)]="publishForm.date"
+                                        #date="ngModel"/>
+                                </div>
+                                <div class="col-sm-1">
+                                    <select
+                                        name="heures"
+                                        class="form-select"
+                                        id="heures"
+                                        [(ngModel)]="publishForm.heures"
+                                        #heures="ngModel">
+                                        <option *ngFor="let h of arrayHeures" [value]="h">
+                                            {{ h }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-1" id="h">h</div>
+                                <div class="col-sm-1">
+                                    <select
+                                        value="0"
+                                        class="form-select col-sm-1"
+                                        id="minutes"
+                                        name="minutes"
+                                        [(ngModel)]="publishForm.minutes"
+                                        #minutes="ngModel">
+                                        <option *ngFor="let m of arrayMinutes" [value]="m">
+                                            {{ m }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div
+                            class="alert alert-danger"
+                            role="alert"
+                            *ngIf="date.errors && f.submitted"
+                            >
+                            Veuillez indiquer la date !
+                            </div>
+                            <div
+                            class="alert alert-danger"
+                            role="alert"
+                            *ngIf="heures.errors && f.submitted"
+                            >
+                            Veuillez indiquer l'heure !
+                            </div>
+                            <div
+                            class="alert alert-danger"
+                            role="alert"
+                            *ngIf="heures.errors && f.submitted"
+                            >
+                            Veuillez indiquer les minutes !
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Fermer</button>
+                        <button type="submit" class="btn btn-primary">Publier</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
