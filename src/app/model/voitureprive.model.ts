@@ -1,7 +1,7 @@
 export class Voitureprive {
   immatriculation: string;
-  brand: string;
-  model: string;
+  marque: string;
+  modele: string;
   category: string;
   totalplaces: number;
 }
