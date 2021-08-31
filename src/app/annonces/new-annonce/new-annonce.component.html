@@ -10,6 +10,9 @@
 
 <!-- Modal -->
 <div class="modal" id="newAnnonceModal" tabindex="-1" aria-labelledby="newAnnonceModalLabel" aria-hidden="true" #newAnnonceModal>
+    <div *ngIf="f.submitted && isFail" class="alert alert-danger" role="alert">
+        <h4>Erreur : {{ errorMessage }} !</h4>
+    </div>
     <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -19,7 +22,7 @@
             <div class="modal-body">
                 <form
                 name="publishForm"
-                (ngSubmit)="f.form.valid && onSubmit()"
+                (ngSubmit)="f.form.valid && onSubmit(f)"
                 #f="ngForm"
                 novalidate>
                     <div id="itineraire">
@@ -37,7 +40,7 @@
                                     #adresseDepart="ngModel"/>
                             </div>
                             <div
-                              class="alert alert-danger"
+                              class="alert alert-danger alert-form"
                               role="alert"
                               *ngIf="adresseDepart.errors && f.submitted"
                             >
@@ -57,23 +60,59 @@
                                     #adresseDestination="ngModel"/>
                             </div>
                             <div
-                              class="alert alert-danger"
+                              class="alert alert-danger alert-form"
                               role="alert"
                               *ngIf="adresseDestination.errors && f.submitted"
                             >
                             Veuillez indiquer l'adresse de destination !
                             </div>
                         </div>
-                        <div class="mb-3 row readonly">
+                        <div class="mb-3 row">
                             <label for="duree" class="col-sm-2 col-form-label">Durée du trajet</label>
-                            <div class="col-sm-10">
-                                <input type="text" readonly class="form-control-plaintext" id="duree" value="2 h 31 mn">
+                            <div class="col-sm-1">
+                                <input 
+                                    required
+                                    type="number"
+                                    class="form-control"
+                                    id="duree"
+                                    min="0"
+                                    step="10"
+                                    name="duree"
+                                    [(ngModel)]="publishForm.duree"
+                                    #duree="ngModel"
+                                >
+                            </div>
+                            <div class="col-sm-1" id="dd">minutes</div>
+                            <div
+                              class="alert alert-danger alert-form"
+                              role="alert"
+                              *ngIf="adresseDestination.errors && f.submitted"
+                            >
+                            Veuillez indiquer la durée en minutes du trajet !
                             </div>
                         </div>
-                        <div class="mb-3 row readonly">
+                        <div class="mb-3 row">
                             <label for="distance" class="col-sm-2 col-form-label">Distance</label>
-                            <div class="col-sm-10">
-                                <input type="text" readonly class="form-control-plaintext" id="distance" value="250 km">
+                            <div class="col-sm-1">
+                                <input
+                                    required
+                                    type="number"
+                                    class="form-control"
+                                    id="distance"
+                                    min="0"
+                                    step="10"
+                                    name="distance"
+                                    [(ngModel)]="publishForm.distance"
+                                    #duree="ngModel"
+                                >
+                            </div>
+                            <div class="col-sm-1" id="dd">km</div>
+                            <div
+                              class="alert alert-danger alert-form"
+                              role="alert"
+                              *ngIf="adresseDestination.errors && f.submitted"
+                            >
+                            Veuillez indiquer la distance en km du trajet !
                             </div>
                         </div>
                     </div>
@@ -92,7 +131,7 @@
                                     #immatriculation="ngModel"/>
                             </div>
                             <div
-                              class="alert alert-danger"
+                              class="alert alert-danger alert-form"
                               role="alert"
                               *ngIf="immatriculation.errors && f.submitted"
                             >
@@ -112,7 +151,7 @@
                                     #marque="ngModel"/>
                             </div>
                             <div
-                              class="alert alert-danger"
+                              class="alert alert-danger alert-form"
                               role="alert"
                               *ngIf="marque.errors && f.submitted"
                             >
@@ -133,7 +172,7 @@
                                     #modele="ngModel"/>
                             </div>
                             <div
-                                class="alert alert-danger"
+                                class="alert alert-danger alert-form"
                                 role="alert"
                                 *ngIf="modele.errors && f.submitted"
                             >
@@ -153,7 +192,7 @@
                                     #nbPlaces="ngModel"/>
                             </div>
                             <div
-                            class="alert alert-danger"
+                            class="alert alert-danger alert-form"
                             role="alert"
                             *ngIf="nbPlaces.errors && f.submitted"
                             >
@@ -203,21 +242,21 @@
                                 </div>
                             </div>
                             <div
-                            class="alert alert-danger"
+                            class="alert alert-danger alert-form"
                             role="alert"
                             *ngIf="date.errors && f.submitted"
                             >
                             Veuillez indiquer la date !
                             </div>
                             <div
-                            class="alert alert-danger"
+                            class="alert alert-danger alert-form"
                             role="alert"
                             *ngIf="heures.errors && f.submitted"
                             >
                             Veuillez indiquer l'heure !
                             </div>
                             <div
-                            class="alert alert-danger"
+                            class="alert alert-danger alert-form"
                             role="alert"
                             *ngIf="heures.errors && f.submitted"
                             >
