@@ -82,6 +82,7 @@ export class NewVehiculeServiceComponent implements OnInit {
         this.isSuccess = true;
         this.isFail = false;
         f.reset();
+        window.location.reload();
       },
       err => {
         this.errorMessage = err.error;
