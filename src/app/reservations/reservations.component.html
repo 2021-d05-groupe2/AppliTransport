@@ -10,12 +10,16 @@
         <tr>
           <th scope="col">Date / heure de début</th>
           <th scope="col">Date / heure de fin</th>
+          <th scope="col"> Destination</th>
+          <th scope="col"> Détails du voyage </th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let covoiture of covoiturages"()>
-          <td>{{covoiturage | json}}</td>
+      <tbody *ngFor="let covoiturage of covoiturages">
+        <tr>
+          <td>{{covoiturage.date}}</td>
           <td>{{covoiturage.duree}}</td>
+          <td>{{covoiturage.adresseDestination}}</td>
+          <td><a [routerLink]='details' class="btn btn-primary"> voir détails </a></td>
         </tr>
       </tbody>
     </table>
@@ -40,6 +44,7 @@
         </tr>
       </tbody>
     </table>
+    <a [routerLink]='nouvelleResaCovoit' class="btn btn-primary"> Reserver un covoiturage </a>
   </ng-container>
 
   <ng-container *ngIf="show=='service'">
@@ -85,6 +90,7 @@
       </tr>
     </tbody>
   </table>
+  <a [routerLink]='nouvelleResaVoiture' class="btn btn-primary"> Reserver une voiture de société </a>
 </ng-container>
 </div>
 <div class="container">

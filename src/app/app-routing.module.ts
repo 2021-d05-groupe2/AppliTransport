@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
+import { DetailcovoiturageComponent } from './detailcovoiturage/detailcovoiturage.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'reservations', component: ReservationsComponent},
-  { path: 'annonces', component: AnnoncesComponent}
+  { path: 'annonces', component: AnnoncesComponent},
+  {path: 'details', component: DetailcovoiturageComponent}
 ];
 
 @NgModule({

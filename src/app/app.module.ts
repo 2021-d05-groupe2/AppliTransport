@@ -12,6 +12,7 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
 import { NewAnnonceComponent } from './annonces/new-annonce/new-annonce.component';
+import { DetailcovoiturageComponent } from './detailcovoiturage/detailcovoiturage.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { NewAnnonceComponent } from './annonces/new-annonce/new-annonce.componen
     RegisterComponent,
     ReservationsComponent,
     AnnoncesComponent,
-    NewAnnonceComponent
+    NewAnnonceComponent,
+    DetailcovoiturageComponent
   ],
   imports: [
     BrowserModule,
