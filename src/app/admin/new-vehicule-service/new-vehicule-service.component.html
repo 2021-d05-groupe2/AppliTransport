@@ -1,0 +1,161 @@
+<div *ngIf="f.submitted && isSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+    <h4>Véhicule ajouté avec succès !</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-end" (click)="open()" data-bs-toggle="modal" data-bs-target="#newVehiculeModal">
+    Ajouter un véhicule
+</button>
+
+<!-- Modal -->
+<div class="modal" id="newVehiculeModal" tabindex="-1" aria-labelledby="newVehiculeModalLabel" aria-hidden="true" #newVehiculeModal>
+    <div *ngIf="f.submitted && isFail" class="alert alert-danger" role="alert">
+        <h4>Erreur : {{ errorMessage }} !</h4>
+    </div>
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="newVehiculeModalLabel">Véhicule</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
+            </div>
+            <div class="modal-body">
+                <form
+                name="addForm"
+                (ngSubmit)="f.form.valid && onSubmit(f)"
+                #f="ngForm"
+                novalidate>
+                    <div class="mb-3 row">
+                        <label for="immatriculation" class="col-sm-2 col-form-label">Immatriculation</label>
+                        <div class="col-sm-10">
+                            <input
+                                required
+                                type="text"
+                                class="form-control"
+                                id="immatriculation"
+                                name="immatriculation"                                    
+                                [(ngModel)]="addForm.immatriculation"
+                                #immatriculation="ngModel"/>
+                        </div>
+                        <div
+                            class="alert alert-danger"
+                            role="alert"
+                            *ngIf="immatriculation.errors && f.submitted"
+                        >
+                        Veuillez indiquer le numéro d'immatriculation du véhicule !
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="marque" class="col-sm-2 col-form-label">Marque</label>
+                        <div class="col-sm-10">
+                            <input
+                                required
+                                type="text"
+                                class="form-control"
+                                id="marque"
+                                name="marque"                                    
+                                [(ngModel)]="addForm.marque"
+                                #marque="ngModel"/>
+                        </div>
+                        <div
+                            class="alert alert-danger"
+                            role="alert"
+                            *ngIf="marque.errors && f.submitted"
+                        >
+                        Veuillez indiquer la marque du véhicule !
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="modele" class="col-sm-2 col-form-label">Modèle</label>
+                        <div class="col-sm-10">
+                            <input
+                                required
+                                type="text"
+                                class="form-control"
+                                id="modele"
+                                name="modele"                                    
+                                [(ngModel)]="addForm.modele"
+                                required
+                                #modele="ngModel"/>
+                        </div>
+                        <div
+                            class="alert alert-danger"
+                            role="alert"
+                            *ngIf="modele.errors && f.submitted"
+                        >
+                        Veuillez indiquer le modèle du véhicule !
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label" for="categorie">Catégorie</label>
+                        <div class="col-sm-3">
+                            <select
+                                class="form-select"
+                                id="categorie"
+                                name="categorie"
+                                [(ngModel)]="addForm.categorie"
+                                required
+                                #categorie="ngModel"
+                            >
+                                <option *ngFor="let c of categories | keyvalue" [value]="c.key">
+                                    {{ c.value }}
+                                </option>
+                            </select>
+                        </div>
+                        <div
+                        class="alert alert-danger"
+                        role="alert"
+                        *ngIf="categorie.errors && f.submitted"
+                        >
+                        Veuillez selectionner une catégorie !
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="nbPlaces" class="col-sm-2 col-form-label">Nombre de places</label>
+                        <div class="col-sm-1">
+                            <input required
+                                type="number"
+                                min="1"
+                                class="form-control"
+                                id="nbPlaces"
+                                name="nbPlaces"                                    
+                                [(ngModel)]="addForm.nbPlaces"
+                                #nbPlaces="ngModel"/>
+                        </div>
+                        <div
+                        class="alert alert-danger"
+                        role="alert"
+                        *ngIf="nbPlaces.errors && f.submitted"
+                        >
+                        Veuillez indiquer le nombre de places du véhicule !
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="imgUrl" class="col-sm-2 col-form-label">Photo</label>
+                        <div class="col-sm-10">
+                            <input required
+                                type="url"
+                                class="form-control"
+                                placeholder="URL de l'image"
+                                id="imgUrl"
+                                name="imgUrl"                                    
+                                [(ngModel)]="addForm.imgUrl"
+                                #imgUrl="ngModel"/>
+                        </div>
+                        <div
+                        class="alert alert-danger"
+                        role="alert"
+                        *ngIf="imgUrl.errors && f.submitted"
+                        >
+                        Veuillez indiquer l'url de la photo du véhicule !
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
