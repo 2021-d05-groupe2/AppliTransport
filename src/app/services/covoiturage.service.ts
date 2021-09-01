@@ -37,6 +37,24 @@ export class CovoiturageService {
   }
 
   public getcovoitencours(): Observable<Covoiturage[]>{
-    return this.http.get<Covoiturage[]>(api + '/travel/listcoivoiturageencours');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.tokenStorageService.getUser().token,
+        'Access-Control-Allow-Origin': 'http://localhost:4200'
+      })
+    };
+    return this.http.get<Covoiturage[]>(api + '/travel/listcoivoiturageencours', httpOptions);
+  }
+
+  public getcovoitfinis(): Observable<Covoiturage[]>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.tokenStorageService.getUser().token,
+        'Access-Control-Allow-Origin': 'http://localhost:4200'
+      })
+    };
+    return this.http.get<Covoiturage[]>(api + '/travel/listcoivoituragetermine', httpOptions);
   }
 }

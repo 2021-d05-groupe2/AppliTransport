@@ -9,17 +9,17 @@
       <thead>
         <tr>
           <th scope="col">Date / heure de début</th>
-          <th scope="col">Date / heure de fin</th>
+          <th scope="col">Durée</th>
           <th scope="col"> Destination</th>
           <th scope="col"> Détails du voyage </th>
         </tr>
       </thead>
-      <tbody *ngFor="let covoiturage of covoiturages">
+      <tbody *ngFor="let covoiturage of covoituragesencours">
         <tr>
           <td>{{covoiturage.date}}</td>
           <td>{{covoiturage.duree}}</td>
           <td>{{covoiturage.adresseDestination}}</td>
-          <td><a [routerLink]='details' class="btn btn-primary"> voir détails </a></td>
+          <td><a href="/details" [routerLink]='details' class="btn btn-primary"> voir détails </a></td>
         </tr>
       </tbody>
     </table>
@@ -27,20 +27,18 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col"> Date / heure de départ</th>
-          <th scope="col">Date / heure de fin</th>
-          <th scope="col">Immatriculation</th>
-          <th scope="col">Marque</th>
-          <th scope="col">Modèle</th>
+          <th scope="col">Date / heure de début</th>
+          <th scope="col">Durée</th>
+          <th scope="col"> Destination</th>
+          <th scope="col"> Détails du voyage </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngFor="let covoiturage of covoituragesfinis">
         <tr>
-          <td>exemple</td>
-          <td>exemple</td>
-          <td>exemple</td>
-          <td>exemple</td>
-          <td>exemple</td>
+          <td>{{covoiturage.date}}</td>
+          <td>{{covoiturage.duree}}</td>
+          <td>{{covoiturage.adresseDestination}}</td>
+          <td><a [routerLink]='details' class="btn btn-primary"> voir détails </a></td>
         </tr>
       </tbody>
     </table>

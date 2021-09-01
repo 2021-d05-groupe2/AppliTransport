@@ -10,24 +10,27 @@ import { CovoiturageService } from '../services/covoiturage.service';
 })
 export class ReservationsComponent implements OnInit {
 
-  covoiturages: Covoiturage[];
+  covoituragesencours: Covoiturage[];
+  covoituragesfinis: Covoiturage[];
 
   constructor(private route: ActivatedRoute,
     private covoiturageService: CovoiturageService) {
-      this.getallcovoit();
+      this.getcovoitencours();
+      this.getcovoitfinis();
     }
 
   public show:any=null;
 
 
   ngOnInit(): void {
-    this.getallcovoit();
+    this.getcovoitencours();
   }
 
   toggle1(){
     if (this.show!='covoit') {
       this.show = 'covoit';
-      this.getallcovoit();
+      this.getcovoitencours();
+      this.getcovoitfinis();
     } else {
       this.show = null;
     }
@@ -42,10 +45,22 @@ export class ReservationsComponent implements OnInit {
     }
   }
 
-  getallcovoit(){
-    this.covoiturageService.getallCovoit().subscribe(
+  getcovoitencours(){
+    this.covoiturageService.getcovoitencours().subscribe(
       (resp)=>{
-        this.covoiturages = resp;
+        this.covoituragesencours = resp;
+        console.log(resp);
+      },
+      (error) =>{
+        console.log(error);
+      }
+    )
+  }
+
+  getcovoitfinis(){
+    this.covoiturageService.getcovoitfinis().subscribe(
+      (resp)=>{
+        this.covoituragesfinis = resp;
         console.log(resp);
       },
       (error) =>{

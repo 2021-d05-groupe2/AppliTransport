@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'reservations', component: ReservationsComponent},
   { path: 'annonces', component: AnnoncesComponent},
-  {path: 'details', component: DetailcovoiturageComponent},
+  { path: 'details', component: DetailcovoiturageComponent},
   { path: 'admin/vehicules', component: VehiculesServiceComponent}
 ];
 
