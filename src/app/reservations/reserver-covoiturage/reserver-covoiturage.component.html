@@ -43,8 +43,6 @@
                                         class="form-check-input"
                                         type="checkbox"
                                         [checked]="covoit.checked"
-                                        [ngModel]="covoit.id"
-                                        [ngModelOptions]="{standalone: true}"
                                     >
                                 </td>
                                 <td>{{displayDate(covoit.date)}}</td>
@@ -55,6 +53,9 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div *ngIf="!availableCovoiturages || availableCovoiturages.length == 0" class="alert alert-dark" role="alert">
+                        <h4>Aucun covoiturage disponible actuellement.</h4>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
                         <button type="submit" class="btn btn-primary">Réserver</button>

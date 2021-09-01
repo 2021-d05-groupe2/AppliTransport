@@ -55,12 +55,13 @@ export class ReserverCovoiturageComponent implements OnInit {
   }
 
   getAvailableCovoits(){
-    this.covoiturageService.getallCovoit().subscribe(
+    this.covoiturageService.getAvailableCovoits().subscribe(
       (resp)=>{
         this.availableCovoiturages = resp;
         console.log(resp);
       },
       (error) =>{
+        console.log("ici");
         console.log(error);
       }
     )
