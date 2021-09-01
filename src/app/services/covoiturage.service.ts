@@ -39,7 +39,6 @@ export class CovoiturageService {
   }
 
   public reserverCovoits(covoits:Covoiturage[]): Observable<Covoiturage[]>{
-
-    return this.http.post<Covoiturage[]>(apiTravel + '/reserverCovoits',this.httpOptions);
+    return this.http.post<Covoiturage[]>(apiTravel + '/reserverCovoits', covoits, this.httpOptions);
   }
 }
