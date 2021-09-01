@@ -1,10 +1,10 @@
 import { Administrateur } from "./administrateur.model";
 export class Voituresociete {
   immatriculation: string;
-  brand: string;
-  model: string;
-  category: string;
-  imgURL: string;
-  vehiculeStatus: string;
+  marque: string;
+  modele: string;
+  categorie: string;
+  imgUrl: string;
+  status: string;
   responsable: Administrateur;
 }

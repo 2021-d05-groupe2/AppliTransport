@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
 import { DetailcovoiturageComponent } from './detailcovoiturage/detailcovoiturage.component';
+import { VehiculesServiceComponent } from './admin/vehicules-service/vehicules-service.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'reservations', component: ReservationsComponent},
   { path: 'annonces', component: AnnoncesComponent},
-  {path: 'details', component: DetailcovoiturageComponent}
+  {path: 'details', component: DetailcovoiturageComponent},
+  { path: 'admin/vehicules', component: VehiculesServiceComponent}
 ];
 
 @NgModule({

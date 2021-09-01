@@ -4,12 +4,15 @@
     margin: 0;
     padding-top: .3em;
 }
-
-.readonly{
-    pointer-events: none;
+#dd{
+    width: auto;
+    vertical-align: baseline;
+    margin: 0;
+    padding-left: 0;
+    padding-top: .5em;
 }
 
-.alert-danger{
+.alert-form{
     height: 30px;
     line-height:30px;
     padding:0px 15px;
