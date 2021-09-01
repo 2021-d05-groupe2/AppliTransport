@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h3>Mes réservations</h3>
-  <button (click)="toggle1()" id="covoit"> Covoiturage</button>
-  <button (click)="toggle2()" id="service">Véhicule de société</button>
+  <button class="btn btn-primary" (click)="toggle1()" id="covoit"> Covoiturage</button>
+  <button class="btn btn-primary pull-right" (click)="toggle2()" id="service">Véhicule de société</button>
 
   <ng-container *ngIf="show=='covoit'">
       <h4>Réservations de covoiturage en cours</h4>
@@ -10,18 +10,16 @@
         <tr>
           <th scope="col">Date / heure de début</th>
           <th scope="col">Date / heure de fin</th>
-          <th scope="col">Immatriculation</th>
-          <th scope="col">Marque</th>
-          <th scope="col">Modèle</th>
+          <th scope="col"> Destination</th>
+          <th scope="col"> Détails du voyage </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngFor="let covoiturage of covoiturages">
         <tr>
-          <td>exemple</td>
-          <td>exemple</td>
-          <td>exemple</td>
-          <td>exemple</td>
-          <td>exemple</td>
+          <td>{{covoiturage.date}}</td>
+          <td>{{covoiturage.duree}}</td>
+          <td>{{covoiturage.adresseDestination}}</td>
+          <td><a [routerLink]='details' class="btn btn-primary"> voir détails </a></td>
         </tr>
       </tbody>
     </table>
@@ -29,7 +27,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col">Date / heure de début</th>
+          <th scope="col"> Date / heure de départ</th>
           <th scope="col">Date / heure de fin</th>
           <th scope="col">Immatriculation</th>
           <th scope="col">Marque</th>
@@ -46,6 +44,7 @@
         </tr>
       </tbody>
     </table>
+    <a [routerLink]='nouvelleResaCovoit' class="btn btn-primary"> Reserver un covoiturage </a>
   </ng-container>
 
   <ng-container *ngIf="show=='service'">
@@ -91,6 +90,7 @@
       </tr>
     </tbody>
   </table>
+  <a [routerLink]='nouvelleResaVoiture' class="btn btn-primary"> Reserver une voiture de société </a>
 </ng-container>
 </div>
 <div class="container">

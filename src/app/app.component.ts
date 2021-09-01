@@ -18,7 +18,9 @@ export class AppComponent implements OnInit {
 
   eventBusSub?: Subscription;
 
-  constructor(private tokenStorageService: TokenStorageService, private eventBusService: EventBusService) { }
+  constructor(
+    private tokenStorageService: TokenStorageService,
+    private eventBusService: EventBusService) {}
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();

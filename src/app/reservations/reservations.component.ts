@@ -1,4 +1,7 @@
+import { Covoiturage } from './../model/covoiturage.model';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CovoiturageService } from '../services/covoiturage.service';
 
 @Component({
   selector: 'app-reservations',
@@ -7,17 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationsComponent implements OnInit {
 
-  constructor() { }
+  covoiturages: Covoiturage[];
+
+  constructor(private route: ActivatedRoute,
+    private covoiturageService: CovoiturageService) {
+      this.getallcovoit();
+    }
 
   public show:any=null;
 
 
   ngOnInit(): void {
+    this.getallcovoit();
   }
 
   toggle1(){
     if (this.show!='covoit') {
       this.show = 'covoit';
+      this.getallcovoit();
     } else {
       this.show = null;
     }
@@ -30,6 +40,18 @@ export class ReservationsComponent implements OnInit {
     } else {
       this.show = null;
     }
+  }
+
+  getallcovoit(){
+    this.covoiturageService.getallCovoit().subscribe(
+      (resp)=>{
+        this.covoiturages = resp;
+        console.log(resp);
+      },
+      (error) =>{
+        console.log(error);
+      }
+    )
   }
 
 }
