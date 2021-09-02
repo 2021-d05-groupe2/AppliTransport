@@ -16,7 +16,7 @@
       </thead>
       <tbody *ngFor="let covoiturage of covoituragesencours">
         <tr>
-          <td>{{covoiturage.date}}</td>
+          <td>{{displayDate(covoiturage.date)}}</td>
           <td>{{covoiturage.duree}}</td>
           <td>{{covoiturage.adresseDestination}}</td>
           <td><a href="/detailscovoiturage" [routerLink]="['/details', covoiturage.id]" class="btn btn-primary"> voir détails </a></td>
@@ -35,7 +35,7 @@
       </thead>
       <tbody *ngFor="let covoiturage of covoituragesfinis">
         <tr>
-          <td>{{covoiturage.date}}</td>
+          <td>{{displayDate(covoiturage.date)}}</td>
           <td>{{covoiturage.duree}}</td>
           <td>{{covoiturage.adresseDestination}}</td>
           <td><a href="/detailscovoiturage" [routerLink]="['/details', covoiturage.id]" class="btn btn-primary"> voir détails </a></td>
@@ -51,19 +51,17 @@
     <thead>
       <tr>
         <th scope="col">Date / heure de début</th>
-        <th scope="col">Date / heure de fin</th>
-        <th scope="col">Immatriculation</th>
-        <th scope="col">Marque</th>
-        <th scope="col">Modèle</th>
+        <th scope="col"> Durée </th>
+        <th scope="col"> Destination</th>
+        <th scope="col"> Détails de la réservation</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let reservation of reservationsencours">
       <tr>
-        <td>exemple</td>
-        <td>exemple</td>
-        <td>exemple</td>
-        <td>exemple</td>
-        <td>exemple</td>
+        <td>{{reservation.date}}</td>
+        <td>{{reservation.duree}}</td>
+        <td>{{reservation.adresseDestination}}</td>
+        <td><a href="/detailscovoiturage" [routerLink]="['/details', reservation.id]" class="btn btn-primary"> voir détails </a></td>
       </tr>
     </tbody>
   </table>
@@ -72,20 +70,19 @@
     <thead>
       <tr>
         <th scope="col">Date / heure de début</th>
-        <th scope="col">Date / heure de fin</th>
-        <th scope="col">Immatriculation</th>
-        <th scope="col">Marque</th>
-        <th scope="col">Modèle</th>
+        <th scope="col"> Durée </th>
+        <th scope="col"> Destination</th>
+        <th scope="col"> Détails de la réservation</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>exemple</td>
-        <td>exemple</td>
-        <td>exemple</td>
-        <td>exemple</td>
-        <td>exemple</td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>exemple</td>
+          <td>exemple</td>
+          <td>exemple</td>
+          <td><a href="/detailscovoiturage" [routerLink]="['/details', reservation.id]" class="btn btn-primary"> voir détails </a></td>
+        </tr>
     </tbody>
   </table>
   <app-reserver-vehicule></app-reserver-vehicule>
