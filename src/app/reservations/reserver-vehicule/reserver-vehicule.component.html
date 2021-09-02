@@ -8,8 +8,9 @@
     Reserver un vehicule
 </button>
 <div class="modal" id="reserverVehiculeModal" tabindex="-1" aria-labelledby="reserverVehiculeModalLabel" aria-hidden="true" #reserverVehiculeModal>
-    <div *ngIf="isFail" class="alert alert-danger" role="alert">
+    <div *ngIf="isFail" class="alert alert-danger alert-dismissible fade show" role="alert">
         <h4>Erreur : {{ errorMessage }} !</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
@@ -18,105 +19,126 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
             </div>
             <div class="modal-body">
-                <form
-                    name="searchForm"
-                    (ngSubmit)="f.form.valid && search(f)"
-                    #f="ngForm"
-                    novalidate>
-                    <div class="mb-4 row">
-                        <label for="dateAller" class="col-sm-3 col-form-label">Date / Heure de réservation</label>
-                        <div class="col-sm-2">
-                            <input
-                                required
-                                type="date"
-                                class="form-control"
-                                id="dateAller"
-                                name="dateAller"
-                                min="{{ minDate }}"                     
-                                [(ngModel)]="searchForm.dateAller"
-                                #dateAller="ngModel"/>
-                        </div>
-                        <div class="col-sm-1">
-                            <select
-                                name="heuresAller"
-                                class="form-select"
-                                id="heuresAller"
-                                [(ngModel)]="searchForm.heuresAller"
-                                #heuresAller="ngModel">
-                                <option *ngFor="let h of arrayHeures" [value]="h">
-                                    {{ h }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-sm-1" id="h">h</div>
-                        <div class="col-sm-1">
-                            <select
-                                value="0"
-                                class="form-select col-sm-1"
-                                id="minutesAller"
-                                name="minutesAller"
-                                [(ngModel)]="searchForm.minutesAller"
-                                #minutesAller="ngModel">
-                                <option *ngFor="let m of arrayMinutes" [value]="m">
-                                    {{ m }}
-                                </option>
-                            </select>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" 
+                                    [ngClass]="showSearch ? 'd-none' : ''"
+                                    type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne"
+                                    aria-expanded="false"
+                                    aria-controls="flush-collapseOne"
+                                    (click)="availableVehicules = []; f.submitted = false">
+                                Nouvelle recherche
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" [ngClass]="showSearch ? 'show' : ''" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <form
+                                    name="searchForm"
+                                    (ngSubmit)="f.form.valid && search(f)"
+                                    #f="ngForm"
+                                    novalidate>
+                                    <div class="mb-4 row">
+                                        <label for="dateAller" class="col-sm-3 col-form-label">Date / Heure de réservation</label>
+                                        <div class="col-sm-2">
+                                            <input
+                                                required
+                                                type="date"
+                                                class="form-control"
+                                                id="dateAller"
+                                                name="dateAller"
+                                                min="{{ minDate }}"                     
+                                                [(ngModel)]="searchForm.dateAller"
+                                                #dateAller="ngModel"/>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <select
+                                                name="heuresAller"
+                                                class="form-select"
+                                                id="heuresAller"
+                                                [(ngModel)]="searchForm.heuresAller"
+                                                #heuresAller="ngModel">
+                                                <option *ngFor="let h of arrayHeures" [value]="h">
+                                                    {{ h }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-1" id="h">h</div>
+                                        <div class="col-sm-1">
+                                            <select
+                                                value="0"
+                                                class="form-select col-sm-1"
+                                                id="minutesAller"
+                                                name="minutesAller"
+                                                [(ngModel)]="searchForm.minutesAller"
+                                                #minutesAller="ngModel">
+                                                <option *ngFor="let m of arrayMinutes" [value]="m">
+                                                    {{ m }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 row">
+                                        <label for="dateRetour" class="col-sm-3 col-form-label">Date / Heure retour</label>
+                                        <div class="col-sm-2">
+                                            <input
+                                                required
+                                                type="date"
+                                                class="form-control"
+                                                id="dateRetour"
+                                                name="dateRetour"
+                                                min="{{ minDate }}"                     
+                                                [(ngModel)]="searchForm.dateRetour"
+                                                #dateRetour="ngModel"/>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <select
+                                                name="heuresRetour"
+                                                class="form-select"
+                                                id="heuresRetour"
+                                                [(ngModel)]="searchForm.heuresRetour"
+                                                #heuresRetour="ngModel">
+                                                <option *ngFor="let h of arrayHeures" [value]="h">
+                                                    {{ h }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-1" id="h">h</div>
+                                        <div class="col-sm-1">
+                                            <select
+                                                value="0"
+                                                class="form-select col-sm-1"
+                                                id="minutesRetour"
+                                                name="minutesRetour"
+                                                [(ngModel)]="searchForm.minutesRetour"
+                                                #minutesRetour="ngModel">
+                                                <option *ngFor="let m of arrayMinutes" [value]="m">
+                                                    {{ m }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-2 mb-4">
+                                        <button class="btn btn-lg btn-outline-primary" type="submit">Rechercher</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="mb-4 row">
-                        <label for="dateRetour" class="col-sm-3 col-form-label">Date / Heure retour</label>
-                        <div class="col-sm-2">
-                            <input
-                                required
-                                type="date"
-                                class="form-control"
-                                id="dateRetour"
-                                name="dateRetour"
-                                min="{{ minDate }}"                     
-                                [(ngModel)]="searchForm.dateRetour"
-                                #dateRetour="ngModel"/>
-                        </div>
-                        <div class="col-sm-1">
-                            <select
-                                name="heuresRetour"
-                                class="form-select"
-                                id="heuresRetour"
-                                [(ngModel)]="searchForm.heuresRetour"
-                                #heuresRetour="ngModel">
-                                <option *ngFor="let h of arrayHeures" [value]="h">
-                                    {{ h }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-sm-1" id="h">h</div>
-                        <div class="col-sm-1">
-                            <select
-                                value="0"
-                                class="form-select col-sm-1"
-                                id="minutesRetour"
-                                name="minutesRetour"
-                                [(ngModel)]="searchForm.minutesRetour"
-                                #minutesRetour="ngModel">
-                                <option *ngFor="let m of arrayMinutes" [value]="m">
-                                    {{ m }}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="d-grid gap-2 mb-4">
-                        <button class="btn btn-lg btn-outline-primary" type="submit">Rechercher</button>
-                    </div>
-                </form>
-                <div *ngIf="f.submitted && availableVehicules.length==0" class="alert alert-dark" role="alert">
+                </div>
+                <div *ngIf="f.submitted && !hasAvailableVehicules()" class="alert alert-dark" role="alert">
                     <h4>Aucun vehicule disponible pour les dates sélectionnées.</h4>
                 </div>
-                <div *ngIf="f.submitted && availableVehicules.length > 0">
+                <div *ngIf="f.submitted && hasAvailableVehicules()">
                     <div id="carouselVoitures" class="carousel carousel-dark slide" data-bs-interval="false">
                         <div class="carousel-indicators">
                             <button type="button" *ngFor="let v of availableVehicules; let i = index"
+                                class="carouBtn"
                                 data-bs-target="#carouselVoitures"
                                 attr.data-bs-slide-to="{{i}}"
-                                [ngClass]="i == 0 ? 'active' : ''">
+                                [ngClass]="i == 0 ? 'active' : ''"
+                                disabled>
                             </button>
                         </div>
                         <div class="carousel-inner">
@@ -129,11 +151,11 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselVoitures" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" (click)="carouPrev()" data-bs-target="#carouselVoitures" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselVoitures" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" (click)="carouNext()" data-bs-target="#carouselVoitures" data-bs-slide="next">
                             <span class="carousel-control-next-icon"></span>
                             <span class="visually-hidden">Next</span>
                         </button>

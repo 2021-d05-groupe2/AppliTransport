@@ -21,14 +21,7 @@ export class ReserverVehiculeComponent implements OnInit {
   
 
   availableVehicules: Voituresociete[];
-  selectedVehicule: Voituresociete;
   reservation: Reservation;
-
-  updateSelected(v:Voituresociete, go:boolean){
-    if(go){
-      this.selectedVehicule = v;
-    }
-  }
 
 
   categories: Map<String, String> = new Map([
@@ -81,11 +74,15 @@ export class ReserverVehiculeComponent implements OnInit {
     this.searchSubmitted = false;
     this.isSuccess = false;
     this.isFail = false;
+    this.indexCarouActive = 0;
+    this.availableVehicules = [];
     this.reserverCovoitModal.nativeElement.style.display = 'none';
   }
 
  // SEARCH FORM
 
+  
+  showSearch:boolean = true;
   searchSubmitted:boolean = false;
   isSuccess:boolean = false;
   isFail:boolean = false;
@@ -122,9 +119,42 @@ export class ReserverVehiculeComponent implements OnInit {
     this.vehiculeService.getAvailableVehicules(data)
           .subscribe(res => {
             this.availableVehicules = res as Voituresociete[];
+            if(this.hasAvailableVehicules()){
+            }
           }
     );
+    this.showSearch = false;
   }
+
+  hasAvailableVehicules(){
+    return (this.availableVehicules && this.availableVehicules.length > 0);
+  }
+
+
+  // CAROUSEL
+  indexCarouActive:number = 0;
+  carouPrev(){
+    if(this.hasAvailableVehicules()){
+      if(this.indexCarouActive == 0){
+        this.indexCarouActive = this.availableVehicules.length - 1;
+      }
+      else{
+        this.indexCarouActive--;
+      }
+    }
+  }
+
+  carouNext(){
+    if(this.hasAvailableVehicules()){
+      if(this.indexCarouActive == this.availableVehicules.length - 1){
+        this.indexCarouActive = 0;
+      }
+      else{
+        this.indexCarouActive++;
+      }
+    }
+  }
+
 
   reserver(){
 
@@ -135,11 +165,10 @@ export class ReserverVehiculeComponent implements OnInit {
       dateRetour: this.searchForm.dateRetour,
       heuresRetour: this.searchForm.heuresRetour,
       minutesRetour: this.searchForm.minutesRetour,
-      vehicule: this.selectedVehicule
+      vehicule: this.availableVehicules[this.indexCarouActive]
     }
 
-    this.searchSubmitted = true;
-    this.vehiculeService.reserverVoiture(this.reservation).subscribe(
+    this.vehiculeService.reserverVoiture(data).subscribe(
       (resp)=>{
         this.isSuccess = true;
         window.location.reload();

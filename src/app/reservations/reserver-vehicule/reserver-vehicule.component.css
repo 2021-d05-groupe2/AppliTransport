@@ -5,6 +5,13 @@
     padding-top: .3em;
 }
 
+.accordion-body{
+    padding: .9em 0 0 0;
+}
+.carouBtn{
+    cursor: default;
+}
+
 #carouselVoitures{
     height: 30em;
     align-items: center;
