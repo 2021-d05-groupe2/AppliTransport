@@ -5,7 +5,6 @@ import { Covoiturage } from 'src/app/model/covoiturage.model';
 import { Voitureprive } from 'src/app/model/voitureprive.model';
 import { CovoiturageService } from 'src/app/services/covoiturage.service';
 import { NgForm } from '@angular/forms';
-declare var $ : any;
 
 @Component({
   selector: 'app-new-annonce',
@@ -113,10 +112,8 @@ export class NewAnnonceComponent implements OnInit {
     this.covoiturageService.create(data)
       .subscribe(
         response => {
-          $('#newAnnonceModal').modal('hide');
           this.isSuccess = true;
-          this.isFail = false;
-          f.reset();
+          window.location.reload();
         },
         err => {
           this.errorMessage = err.error;

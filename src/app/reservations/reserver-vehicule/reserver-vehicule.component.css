@@ -1,0 +1,31 @@
+#h{
+    width: auto;
+    vertical-align: baseline;
+    margin: 0;
+    padding-top: .3em;
+}
+
+.accordion-body{
+    padding: .9em 0 0 0;
+}
+.carouBtn{
+    cursor: default;
+}
+
+#carouselVoitures{
+    height: 30em;
+    align-items: center;
+}
+
+.imgCarou{
+    height: 30em;
+    margin: auto;
+}
+
+.carousel-caption, carousel-caption h5{
+    color: #fff;
+    font-size: 20pt;
+    text-shadow: 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000, 0 0 3px #000;
+}
+
+/*#reserverVehiculeModal{display: block;}/*Pour tester sans avoir a rouvrir le modal a chaque refresh */
