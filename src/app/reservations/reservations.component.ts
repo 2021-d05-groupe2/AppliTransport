@@ -1,6 +1,6 @@
 import { Covoiturage } from './../model/covoiturage.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CovoiturageService } from '../services/covoiturage.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class ReservationsComponent implements OnInit {
   covoituragesencours: Covoiturage[];
   covoituragesfinis: Covoiturage[];
 
-  constructor(private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute, private router: Router,
     private covoiturageService: CovoiturageService) {
       this.getcovoitencours();
       this.getcovoitfinis();
@@ -34,7 +34,6 @@ export class ReservationsComponent implements OnInit {
     } else {
       this.show = null;
     }
-
   }
 
   toggle2(){

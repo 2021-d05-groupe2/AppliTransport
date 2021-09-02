@@ -19,7 +19,7 @@
           <td>{{covoiturage.date}}</td>
           <td>{{covoiturage.duree}}</td>
           <td>{{covoiturage.adresseDestination}}</td>
-          <td><a href="/details" [routerLink]='details' class="btn btn-primary"> voir détails </a></td>
+          <td><a href="/detailscovoiturage" [routerLink]="['/details', covoiturage.id]" class="btn btn-primary"> voir détails </a></td>
         </tr>
       </tbody>
     </table>
@@ -38,7 +38,7 @@
           <td>{{covoiturage.date}}</td>
           <td>{{covoiturage.duree}}</td>
           <td>{{covoiturage.adresseDestination}}</td>
-          <td><a [routerLink]='details' class="btn btn-primary"> voir détails </a></td>
+          <td><a href="/detailscovoiturage" [routerLink]="['/details', covoiturage.id]" class="btn btn-primary"> voir détails </a></td>
         </tr>
       </tbody>
     </table>
