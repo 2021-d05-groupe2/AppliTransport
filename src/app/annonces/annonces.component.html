@@ -14,7 +14,7 @@
         </thead>
         <tbody *ngFor="let covoiturage of mesAnnonces">
           <tr>
-            <td>{{covoiturage.date}}</td>
+            <td>{{displayDate(covoiturage.date)}}</td>
             <td>{{covoiturage.adresseDepart}}</td>
             <td>{{covoiturage.adresseDestination}}</td>
             <td>{{covoiturage.nbPassagers}}</td>

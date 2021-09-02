@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, ElementRef, Inject, LOCALE_ID, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Covoiturage } from '../model/covoiturage.model';
@@ -13,11 +14,18 @@ export class AnnoncesComponent implements OnInit {
 
   currentUser: any;
 
-  constructor(private token: TokenStorageService, private router: Router, private covoiturageService: CovoiturageService){
+  constructor(private token: TokenStorageService,
+    private router: Router,
+    private covoiturageService: CovoiturageService,
+    private datePipe: DatePipe){
 
   }
 
   mesAnnonces:Covoiturage;
+
+  displayDate(date:Date){
+    return this.datePipe.transform(date,"EEE d MMM hh:mm");
+  }
 
   ngOnInit(): void {
     
