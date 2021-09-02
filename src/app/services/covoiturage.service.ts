@@ -38,7 +38,7 @@ export class CovoiturageService {
   }
 
   public getcovoitfinis(): Observable<Covoiturage[]>{
-    return this.http.get<Covoiturage[]>(apiTravel + '/travel/listcoivoituragetermine', this.httpOptions);
+    return this.http.get<Covoiturage[]>(apiTravel + '/listcoivoituragetermine', this.httpOptions);
   }
 
   public reserverCovoits(covoits:Covoiturage[]): Observable<Covoiturage[]>{
@@ -46,13 +46,6 @@ export class CovoiturageService {
   }
 
   public getCovoitById(id:number): Observable<Covoiturage>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.tokenStorageService.getUser().token,
-        'Access-Control-Allow-Origin': 'http://localhost:4200'
-      })
-    };
-    return this.http.get<Covoiturage>(api +'/travel/covoituragebyid/'+ `${id}`, httpOptions)
+    return this.http.get<Covoiturage>(apiTravel +'/covoituragebyid/'+ `${id}`, this.httpOptions)
   }
 }
