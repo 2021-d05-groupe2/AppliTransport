@@ -1,5 +1,28 @@
 <div class="container-fluid col-12">
     <h3>Mes annonces</h3>
     <app-new-annonce></app-new-annonce>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Date / heure de début</th>
+            <th scope="col">Lieu de Départ</th>
+            <th scope="col">Lieu de destination</th>
+            <th scope="col">Nombre de voyageurs</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let covoiturage of mesAnnonces">
+          <tr>
+            <td>{{covoiturage.date}}</td>
+            <td>{{covoiturage.adresseDepart}}</td>
+            <td>{{covoiturage.adresseDestination}}</td>
+            <td>{{covoiturage.nbPassagers}}</td>
+            <td>
+                <button type="button" class="btn btn-danger">Annuler</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     
 </div>
