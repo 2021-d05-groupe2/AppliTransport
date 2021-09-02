@@ -1,0 +1,10 @@
+
+.alert-danger{
+    height: 30px;
+    line-height:30px;
+    padding:0px 15px;
+    text-align: center;
+    width: auto;
+}
+
+/*#newVehiculeModal{display: block;}/*Pour tester sans avoir a rouvrir le modal a chaque refresh */
