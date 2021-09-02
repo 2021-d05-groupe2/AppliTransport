@@ -12,6 +12,10 @@
     padding-top: .5em;
 }
 
+.readonly{
+    pointer-events: none;
+}
+
 .alert-form{
     height: 30px;
     line-height:30px;
