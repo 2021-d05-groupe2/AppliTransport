@@ -48,4 +48,8 @@ export class CovoiturageService {
   public getCovoitById(id:number): Observable<Covoiturage>{
     return this.http.get<Covoiturage>(apiTravel +'/covoituragebyid/'+ `${id}`, this.httpOptions)
   }
+
+  public getAnnonces(): Observable<Covoiturage>{
+    return this.http.get<Covoiturage>(apiTravel +'/mesAnnonces', this.httpOptions)
+  }
 }
