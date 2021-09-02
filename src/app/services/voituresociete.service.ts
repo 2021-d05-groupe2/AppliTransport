@@ -14,28 +14,27 @@ export class VoituresocieteService {
   constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) {
   }
 
-  create(data: any): Observable<any> {
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.tokenStorageService.getUser().token,
+      'Access-Control-Allow-Origin': 'http://localhost:4200'
+    })
+  };
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.tokenStorageService.getUser().token,
-        'Access-Control-Allow-Origin': 'http://localhost:4200'
-      })
-    };
-    return this.http.post(baseURL + '/newVehicule', data, httpOptions);
+  create(data: any): Observable<any> {
+    return this.http.post(baseURL + '/newVehicule', data, this.httpOptions);
   }
 
   getAllVehicules(): Observable<Voituresociete[]>{
+    return this.http.get<Voituresociete[]>(baseURL + '/listVehicules', this.httpOptions);
+  }
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.tokenStorageService.getUser().token,
-        'Access-Control-Allow-Origin': 'http://localhost:4200'
-      })
-    };
+  getAvailableVehicules(data: any): Observable<any[]>{
+    return this.http.post<Voituresociete[]>(baseURL + '/listAvailablesVehicules', data, this.httpOptions);
+  }
 
-    return this.http.get<Voituresociete[]>(baseURL + '/listVehicules', httpOptions);
+  reserverVoiture(data: any): Observable<any>{
+    return this.http.post<any>(baseURL + '/reserverVehicule', data, this.httpOptions);
   }
 }
