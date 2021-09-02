@@ -12,6 +12,9 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { AnnoncesComponent } from './annonces/annonces.component';
 import { NewAnnonceComponent } from './annonces/new-annonce/new-annonce.component';
+import { DetailcovoiturageComponent } from './detailcovoiturage/detailcovoiturage.component';
+import { VehiculesServiceComponent } from './admin/vehicules-service/vehicules-service.component';
+import { NewVehiculeServiceComponent } from './admin/new-vehicule-service/new-vehicule-service.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { NewAnnonceComponent } from './annonces/new-annonce/new-annonce.componen
     RegisterComponent,
     ReservationsComponent,
     AnnoncesComponent,
-    NewAnnonceComponent
+    NewAnnonceComponent,
+    DetailcovoiturageComponent,
+    VehiculesServiceComponent,
+    NewVehiculeServiceComponent
   ],
   imports: [
     BrowserModule,

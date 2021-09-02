@@ -8,6 +8,7 @@ export class Covoiturage extends Travel{
   vehicule: Voitureprive;
 
   constructor(organisateur: Collaborateur,
+    id: number,
     adresseDepart: String,
     adresseDestination: String,
     date: Date,
@@ -15,6 +16,7 @@ export class Covoiturage extends Travel{
     vehicule: Voitureprive)
   {
       super();
+      super.id = id;
       super.adresseDepart = adresseDepart;
       super.adresseDestination = adresseDestination;
       super.date = date;
