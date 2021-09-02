@@ -17,6 +17,7 @@ import { VehiculesServiceComponent } from './admin/vehicules-service/vehicules-s
 import { NewVehiculeServiceComponent } from './admin/vehicules-service/new-vehicule-service/new-vehicule-service.component';
 import { ReserverCovoiturageComponent } from './reservations/reserver-covoiturage/reserver-covoiturage.component';
 import { DatePipe } from '@angular/common';
+import { ReserverVehiculeComponent } from './reservations/reserver-vehicule/reserver-vehicule.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { DatePipe } from '@angular/common';
     DetailcovoiturageComponent,
     VehiculesServiceComponent,
     NewVehiculeServiceComponent,
-    ReserverCovoiturageComponent
+    ReserverCovoiturageComponent,
+    ReserverVehiculeComponent
   ],
   imports: [
     BrowserModule,

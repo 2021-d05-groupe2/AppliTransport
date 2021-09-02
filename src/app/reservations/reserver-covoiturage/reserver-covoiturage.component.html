@@ -58,7 +58,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="close()">Annuler</button>
-                        <button type="submit" class="btn btn-primary">Réserver</button>
+                        <button type="submit" class="btn btn-primary" [ngClass]="(!availableCovoiturages || availableCovoiturages.length == 0) ? 'disabled' : ''">Réserver</button>
                     </div>
                 </form>
             </div>

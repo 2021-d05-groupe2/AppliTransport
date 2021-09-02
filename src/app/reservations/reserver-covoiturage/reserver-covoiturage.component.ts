@@ -51,7 +51,6 @@ export class ReserverCovoiturageComponent implements OnInit {
   }
 
   onSubmit(f:NgForm){
-    console.log(this.selectedCovoiturages);
     this.covoiturageService.reserverCovoits(this.selectedCovoiturages).subscribe(
       (resp)=>{
         this.isSuccess = true;

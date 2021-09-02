@@ -22,7 +22,6 @@ export class CovoiturageService {
   };
 
   create(data: any): Observable<any> {
-
     return this.http.post(apiTravel + '/newAnnonce', data, this.httpOptions);
   }
 
