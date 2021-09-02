@@ -1,8 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, ElementRef, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Reservation } from 'src/app/model/reservation.model';
 import { Voituresociete } from 'src/app/model/voituresociete.model';
 import { VoituresocieteService } from 'src/app/services/voituresociete.service';
 
@@ -21,7 +19,6 @@ export class ReserverVehiculeComponent implements OnInit {
   
 
   availableVehicules: Voituresociete[];
-  reservation: Reservation;
 
 
   categories: Map<String, String> = new Map([
