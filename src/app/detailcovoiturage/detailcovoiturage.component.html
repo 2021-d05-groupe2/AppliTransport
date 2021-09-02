@@ -1,5 +1,18 @@
 <div class="container-fluid">
-<a>Page de détails</a>
+<h3>Détails du covoiturage </h3>
+<div class="container-fluid">
+<ul class="list-group">
+  <li class="list-group-item"> date du covoiturage: {{detailcovoit.date}}</li>
+  <li class="list-group-item">adresse de départ: {{detailcovoit.adresseDepart}} </li>
+  <li class="list-group-item"> adresse de destination: {{detailcovoit.adresseDestination}}</li>
+  <li class="list-group-item">durée du trajet: {{detailcovoit.duree}}</li>
+  <li class="list-group-item">organisateur du covoiturage: {{detailcovoit.organisateur}}</li>
+  <li class="list-group-item">nombre de passagers: {{detailcovoit.nbPassagers}}</li>
+  <li class="list-group-item">immatriculation du véhicule: {{detailcovoit.vehicule.immatriculation}}</li>
+  <li class="list-group-item">marque du véhicule: {{detailcovoit.vehicule.marque}}</li>
+  <li class="list-group-item">modèle du véhicule: {{detailcovoit.vehicule.modele}}</li>
+</ul>
+</div>
 </div>
 <div class="container">
   <router-outlet></router-outlet>
